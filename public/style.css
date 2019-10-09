@@ -1,0 +1,14 @@
+
+.visibleNone{
+    display: none;
+}
+.visibleBlock{
+    display: block;
+}
+.zoom:hover{
+    scale: (0.5)
+}
+body{
+    margin: 0 auto;
+    
+}

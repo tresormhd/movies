@@ -1,0 +1,93 @@
+ <% include header.ejs %>
+ <ul class="nav justify-content-center grey lighten-4 py-4">
+    <li class="nav-item">
+        <a class="nav-link active" href="/">accueil</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/books">books</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/movies-search ">movies search</a>
+    </li>
+      
+</ul>
+
+   <div class="text-center ">
+        <h3 >faire des recherches sur un film </h3>
+       
+        <input type="text" name="search" id="search" placeholder="rechercher ...">
+        <button type="submit">search</button>
+        <div class="container">
+            <div class="row"id="result">
+        </div>
+        </div>
+        
+   </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        
+        const search = document.querySelector('#search')
+        const searchSub = document.querySelector('button')
+
+        searchSub.addEventListener('click',valid);
+
+        let resultsDiv = document.querySelector('#result')
+
+        const API_KEY = "7843f8d22a43911f15301ef8d76338ae"
+        function valid() {
+            const query = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${search.value}&language=fr-FR`
+            axios.get(query)
+                .then(function (response) {
+                    console.log(response)
+                    displayResults(response.data.results)
+                });
+        }
+        function displayResults(results) {
+            resultsDiv.innerHTML = ''
+            let moviesDiv = document.createElement("div")
+            moviesDiv.classList.add("row")
+            for (film of results) {
+                
+                resultsDiv.innerHTML +=`<div style="margin-bottom:5px;margin-top:25px"class="col-3 survol"> <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2${film.poster_path}" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                        <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2${film.poster_path}" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p style="font-size:1.2em"class="title is-4">${film.original_title}</p>
+                    </div>
+                    </div>
+
+                    <div style="height:210px;overflow:scroll"class="content">
+                    ${film.overview}
+                    <br>
+                    <time >${film.release_date}</time>
+                    </div>
+                </div>
+                </div>
+                </div> `
+            }
+            const survol = document.querySelectorAll('.survol')
+
+            survol.forEach(e =>{
+                e.addEventListener('mouseout',()=>{
+                    e.classList.add('zoom')
+                })
+            })
+        }
+        // const zoom = document.querySelectorAll('zoom')
+        // zoom.addEventListener('mouseout',function (e) {
+        //     resultsDiv.classList.add("zoom")
+        // })
+       
+    </script>
+<% include footer.ejs %>
