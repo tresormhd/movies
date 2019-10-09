@@ -29,7 +29,7 @@ server.get('/',(req,res)=>{
 });
 
 server.get('/books',(req,res)=>{
-    const title = "une liste de romans et leur auteur"
+    const title = 'une liste de romans et leur auteur'
     res.render('books',{test:title,books:booksCi });
 })
 server.get('/movies-search',(req,res)=>{

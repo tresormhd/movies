@@ -19,7 +19,7 @@
         <button type="submit">search</button>
         <div class="container">
             <div class="row"id="result">
-        </div>
+            </div>
         </div>
         
    </div>
@@ -77,7 +77,8 @@
                 </div> `
             }
             const survol = document.querySelectorAll('.survol')
-
+            const date = new Date()
+            console.log(date)
             survol.forEach(e =>{
                 e.addEventListener('mouseout',()=>{
                     e.classList.add('zoom')

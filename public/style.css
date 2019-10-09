@@ -1,4 +1,7 @@
-
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
 .visibleNone{
     display: none;
 }
@@ -10,5 +13,9 @@
 }
 body{
     margin: 0 auto;
-    
+}
+h1 ,h3 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',cursive;
+    font-style: italic;
+    font-size: 25px;
 }
