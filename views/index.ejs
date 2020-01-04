@@ -1,19 +1,81 @@
-    <% include header.ejs %>
-
-    <ul class="nav justify-content-center grey lighten-4 py-4">
-        <li class="nav-item">
-            <a class="nav-link active" href="/">accueil</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/books">books</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/movies-search ">movies search</a>
-        </li>
-      
-    </ul>
+    <% include  ./partials/header.ejs %>
 
     <h1 align="center">salut ici la compagnie !  </h1>      
     <p>juste un template pour tester le systeme </p>
+    <div class="container">
+    <div class="row">
+
     
-<% include footer.ejs %>
+    <%  for (film of tableau) {  %>
+    <div style=" box-shadow: gray 5px;margin-bottom:5px;margin-top:25px;"class="col-3"> 
+    
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2<%=film.poster_path %>" alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                        <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2<%=film.poster_path %>"  alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p style="font-size:1.2em"class="title is-4"><%=film.original_title%></p>
+                    </div>
+                </div>
+
+                <div style="height:210px;overflow:scroll"class="content">
+                    <%=film.overview%>
+                    <br>
+                    <time><%=film.release_date%></time>
+                </div>
+            </div>
+        </div> 
+    </div> 
+
+    <% } %> 
+    </div>
+    </div>
+    <div id="result">
+
+    </div>
+    <script>
+        /*    let resultsDiv = document.querySelector('#result')
+        resultsDiv.innerHTML = ''
+        if (tableau) {
+            for (film of tableau) {
+                
+                resultsDiv.innerHTML +=`<div style=" box-shadow: gray 5px;margin-bottom:5px;margin-top:25px;"class="col-3"> <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                    <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2${film.poster_path}" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                        <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2${film.poster_path}" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p style="font-size:1.2em"class="title is-4">${film.original_title}</p>
+                    </div>
+                    </div>
+
+                    <div style="height:210px;overflow:scroll"class="content">
+                    ${film.overview}
+                    <br>
+                    <time >${film.release_date}</time>
+                    </div>
+                </div>
+                </div>
+                </div> `
+            }
+        }*/
+        
+    </script>
+<% include  ./partials/footer.ejs %>
