@@ -15,20 +15,22 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         
-        const search = document.querySelector('#search')
+        const search = document.querySelector('#search').value
         const searchSub = document.querySelector('button')
         let resultsDiv = document.querySelector('#result')
         
         const API_KEY = "7843f8d22a43911f15301ef8d76338ae"
         searchSub.addEventListener('click',valid);
         function valid() {
-            const query = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=fr-FR&include_adult=false&query=${search.value}`
+            const query = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=fr-FR&include_adult=false&query=${search}`
           //  const query = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${search.value}&language=fr-FR`
             axios.get(query)
                 .then(function (response) {
                     console.log(response)
                     displayResults(response.data.results)
-                });
+                })
+                .catch(err => console.log('error',err ))
+                
         }
         function displayResults(results) {
             resultsDiv.innerHTML = ''
