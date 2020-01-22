@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-const connection =async ()=>{
+const connection = async ()=>{
   
     try {
-        await mongoose.connect('mongodb://localhost:27017/movies',{
+        await mongoose.connect('mongodb://localhost:27017/moviesDB',{
           useNewUrlParser:true,
           useFindAndModify:false,
           useUnifiedTopology:true,

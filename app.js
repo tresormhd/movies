@@ -3,8 +3,8 @@ const bodyParser = require('body-parser')
 const axios = require('axios');
 const multer  = require('multer')
 const upload = multer()
-const mongoose = require('mongoose')
 
+mongoose = require('mongoose')
 
 const jwt = require('jsonwebtoken')
 const expressjwt = require('express-jwt')
@@ -17,7 +17,6 @@ const secret = "azertyuiopmlkjhgfdsqwcvbnppouyfcjvc,;v"
 
 server.set('views','./views');
 server.set('view engine','ejs');
-
 
 //middlewares 
 server.use(express.static('/public'));
