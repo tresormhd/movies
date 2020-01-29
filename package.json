@@ -21,6 +21,7 @@
   "devDependencies": {
     "ejs": "^2.7.1",
     "fake": "^0.2.2",
+    "faker": "^4.1.0",
     "nodemon": "^1.19.3"
   }
 }

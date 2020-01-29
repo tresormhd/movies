@@ -28,7 +28,7 @@
 				<buttun id="display-payload">voir le payLoad</buttun>
 				<div id="decrypter-payload"></div>
 				<div>
-					<a href="#" id="member_only">espace membre</a>
+					<a class="member_only">espace membre</a>
 				</div>
 			</div>
 		</div>
@@ -123,7 +123,7 @@
 				}
 				var lien = "http://localhost:8000/" ;
 				axios.get(
-					lien+page,
+					lien + page,
 					config
 				).then( res =>{
 					console.log('success',res)

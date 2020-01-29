@@ -20,11 +20,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <% for (romans of books) { %>
+                                <% for (movie of moviesData) { %>
                                     <tr>
                                         <th scope="row"><%= i+=1 %></th>
-                                        <td><%= romans.title %></td>
-                                        <td><%= romans.author %></td>
+                                        <td><%= movie.movieTitle %></td>
+                                        <td><%= movie.movieYear %></td>
                                     </tr>
                                 <%  } %> 
                             </tbody>
@@ -35,11 +35,11 @@
                         </table>
                     </div>
                     <div class="col-6 text-center">
-                <form action="/books" method="post">
+                <form action="/books" method="POST">
                     <label > titre du roman</label>
                     <input class="form-control"type="text" name="titre" id="titleB" >
-                    <label > auteur du roman</label>
-                    <input class="form-control success"type="text" name="auteur" id="auteurB">
+                    <label > année de sortie </label>
+                    <input class="form-control success"type="number" name="annéeDeSortie" id="auteurB">
                     <input type="submit" class="btn btn-outline-default" value="envoyer">
                 </form>
             </div>
@@ -61,7 +61,9 @@
                 method:'post',
                 body: new FormData(form)
                 })
-                .then(checkStatus)
+                .then(
+                    checkStatus
+                    )
                 .catch(function(error){
                     console.error('request failed', error)
                 })
@@ -82,7 +84,7 @@
             } 
         }
 
-    </script> -->
+    </script>  -->
 
     <!-- JQuery -->
 <% include  ./partials/footer.ejs %>
