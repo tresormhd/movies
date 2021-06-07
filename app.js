@@ -9,7 +9,7 @@ mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 const expressjwt = require('express-jwt')
 const faker = require('faker')
-const db = require('./setting/database')
+const db = require('./setting/database').default
 
 const server = express()
 const port = process.env.port || 8000
@@ -54,7 +54,7 @@ server.get('/',async(req,res)=>{
     let movies_date ;
 
     const query = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=fr-FR&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2019`
-    let filmss =await axios.get(query)
+    let filmss = await axios.get(query)
         .then((response)=>{
             let tab =  getCurrentMovies(response.data.results)
             return tab
@@ -183,7 +183,5 @@ server.get('/member_only',(req,res)=>{
 server.get('/movies-search',(req,res)=>{
     res.render('movies_search')
 })
-
-
 
 server.listen(port,()=> console.log(`demarre sur le port  ${port}`) );
